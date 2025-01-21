@@ -61,8 +61,7 @@ extern int yydebug;
     SUB = 262,                     /* SUB  */
     MUL = 263,                     /* MUL  */
     DIV = 264,                     /* DIV  */
-    ASSIGN = 265,                  /* ASSIGN  */
-    NEWLINE = 266                  /* NEWLINE  */
+    ASSIGN = 265                   /* ASSIGN  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -76,7 +75,7 @@ union YYSTYPE
     int integ;
     struct Variable* var;
 
-#line 80 "parser.tab.h"
+#line 79 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

@@ -21,7 +21,7 @@ extern FILE* yyin;
 
 %token <var> IDENT
 %token <integ> VALUE
-%token PRINT ADD SUB MUL DIV ASSIGN NEWLINE
+%token PRINT ADD SUB MUL DIV ASSIGN
 
 %type <integ> expr
 
@@ -36,34 +36,18 @@ extern FILE* yyin;
 start: parse_objects;
 
 parse_objects:
-      parse_objects variables NEWLINE
-    | parse_objects commands NEWLINE
+    variable
     ;
 
-commands:
-      print
-    ;
-
-variables:
-    IDENT ASSIGN expr {
-        $1->value = $3;
-    }
-    ;
-
-print:
-    PRINT expr {
-        printf("%d\n", $2);
-    }
-    ;
+variable:
+    IDENT ASSIGN expr
 
 expr:
       expr ADD expr { $$ = $1 + $3; }
-    | expr SUB expr { $$ = $1 - $3; }
+    | expr SUB epxr { $$ = $1 - $3; }
     | expr MUL expr { $$ = $1 * $3; }
     | expr DIV expr { $$ = $1 / $3; }
-    | VALUE { $$ = $1; }
-    | IDENT { $$ = $1->value; }
-    ;
+    
 
 
 %%

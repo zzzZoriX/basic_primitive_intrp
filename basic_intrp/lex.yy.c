@@ -354,8 +354,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 13
-#define YY_END_OF_BUFFER 14
+#define YY_NUM_RULES 12
+#define YY_END_OF_BUFFER 13
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -365,8 +365,8 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[23] =
     {   0,
-        0,    0,   14,   12,   10,    7,   11,    5,    2,    3,
-        4,    9,    6,    8,    8,   11,    9,    0,    0,    0,
+        0,    0,   13,   11,    9,    9,   10,    5,    2,    3,
+        4,    8,    6,    7,    7,   10,    8,    0,    0,    0,
         1,    0
     } ;
 
@@ -773,46 +773,41 @@ YY_RULE_SETUP
 { return ASSIGN; }
 	YY_BREAK
 case 7:
-/* rule 7 can match eol */
 YY_RULE_SETUP
-#line 23 "lexer.l"
-{ return NEWLINE; }
-	YY_BREAK
-case 8:
-YY_RULE_SETUP
-#line 25 "lexer.l"
+#line 24 "lexer.l"
 { 
                                     yylval.var = malloc(sizeof(Variable));
                                     yylval.var->name = strdup(yytext); 
                                     return IDENT;
                                 }
 	YY_BREAK
-case 9:
+case 8:
 YY_RULE_SETUP
-#line 30 "lexer.l"
+#line 29 "lexer.l"
 { yylval.integ = atoi(yytext); return VALUE; }
+	YY_BREAK
+case 9:
+/* rule 9 can match eol */
+YY_RULE_SETUP
+#line 31 "lexer.l"
+; // ничего
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 32 "lexer.l"
-; // ничего
+; // комментарий
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 33 "lexer.l"
-; // комментарий
+#line 34 "lexer.l"
+{ printf("Unknown symbol: %s\n", yytext); } 
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 35 "lexer.l"
-{ printf("Unknown symbol: %s\n", yytext); } 
-	YY_BREAK
-case 13:
-YY_RULE_SETUP
-#line 37 "lexer.l"
+#line 36 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 815 "lex.yy.c"
+#line 810 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1817,5 +1812,5 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 37 "lexer.l"
+#line 36 "lexer.l"
 

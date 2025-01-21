@@ -20,7 +20,6 @@
 "/"                             { return MUL; }
 "*"                             { return DIV; }
 "="                             { return ASSIGN; }
-"\n"                            { return NEWLINE; }
 
 [a-zA-Z]                        { 
                                     yylval.var = malloc(sizeof(Variable));
@@ -29,7 +28,7 @@
                                 }
 [0-9]+                          { yylval.integ = atoi(yytext); return VALUE; }
 
-[ \t]                           ; // ничего
+[ \t\n]                         ; // ничего
 "#".*                           ; // комментарий
 
 .                               { printf("Unknown symbol: %s\n", yytext); } 

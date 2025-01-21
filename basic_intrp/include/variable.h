@@ -6,9 +6,9 @@
 #include <stdlib.h>
 
 
-static Variable** var_list;
+Variable** var_list;
 size_t var_list_indx = 0;
-static size_t current_var_list_size = 0;
+size_t current_var_list_size = 0;
 
 /* initialize var_List */
 void
